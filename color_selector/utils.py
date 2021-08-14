@@ -1,3 +1,5 @@
+import bpy
+
 def hsv2rgb(h, s, v):
     c = v * s
     h2 = h * 360 / 60

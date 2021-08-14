@@ -18,30 +18,10 @@
 
 import bpy
 from bpy.types import PropertyGroup
-from bpy.props import FloatVectorProperty, PointerProperty, BoolProperty
+from bpy.props import PointerProperty, BoolProperty
 
-from . import utils
 
 class ColorSelectorProps(PropertyGroup):
-    def get_color(i):
-        return FloatVectorProperty(
-            name="Color",
-            description="Set Color for the Palette",
-            subtype="COLOR",
-            default=utils.hsv2rgb(i / 8, 0.9, 1.0),
-            size=3,
-            max=1.0, min=0.0
-        )
-
-    color_ID_color_0: get_color(0)
-    color_ID_color_1: get_color(1)
-    color_ID_color_2: get_color(2)
-    color_ID_color_3: get_color(3)
-    color_ID_color_4: get_color(4)
-    color_ID_color_5: get_color(5)
-    color_ID_color_6: get_color(6)
-    color_ID_color_7: get_color(7)
-
     def show_hide_param():
         return BoolProperty(
             description="Show/Hide elements",
@@ -61,6 +41,7 @@ class ColorSelectorProps(PropertyGroup):
 def register():
     bpy.utils.register_class(ColorSelectorProps)
     bpy.types.Scene.colorSelectorProps = PointerProperty(type=ColorSelectorProps)
+
 
 
 def unregister():

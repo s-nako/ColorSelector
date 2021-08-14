@@ -58,7 +58,8 @@ class COLOR_SELECTOR_PT_selector_panel(Panel):
         if draw_UI():
             for i in range(COLOR_NUM):
                 row = box.row(align=True)
-                row.prop(context.scene.colorSelectorProps, "color_ID_color_{}".format(i), text="")
+                material = bpy.data.materials["ColorSelectorMaterial{}".format(i)]
+                row.prop(material, "diffuse_color", text="")
 
                 if getattr(context.scene.colorSelectorProps, "show_hide_ID_{}".format(i)):
                     hide_op = row.operator("color_selector.hide", text="Show")
