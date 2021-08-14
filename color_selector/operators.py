@@ -103,7 +103,7 @@ class COLOR_SELECTOR_OT_select(Operator):
 
     index: bpy.props.IntProperty(name="index")
 
-    def execute(self, context):  # eventloop should be here
+    def execute(self, context):
         material_name = "ColorSelectorMaterial{}".format(self.index)
         obj = bpy.context.active_object
         bpy.ops.mesh.select_mode(type="FACE")
@@ -120,7 +120,7 @@ class COLOR_SELECTOR_OT_assign(Operator):
 
     index: bpy.props.IntProperty(name="index")
 
-    def execute(self, context):  # eventloop should be here
+    def execute(self, context):
         material_name = "ColorSelectorMaterial{}".format(self.index)
         obj = bpy.context.active_object
         if not obj.data.materials:
@@ -140,7 +140,7 @@ class COLOR_SELECTOR_OT_release(Operator):  # release means set default
 
     index: bpy.props.IntProperty(name="index")
 
-    def execute(self, context):  # eventloop should be here
+    def execute(self, context):
         bpy.ops.object.mode_set(mode='OBJECT')
         for polygon in bpy.context.active_object.data.polygons:
             polygon.select = False
@@ -177,7 +177,7 @@ class COLOR_SELECTOR_OT_hide(Operator):
 
     index: bpy.props.IntProperty(name="index")
 
-    def execute(self, context):  # eventloop should be here
+    def execute(self, context):
         setattr(context.scene.colorSelectorProps, "show_hide_ID_{}".format(self.index), False)
         deselect_all()
         # bpy.ops.mesh.select_mode(type="FACE")
@@ -194,7 +194,7 @@ class COLOR_SELECTOR_OT_show(Operator):
 
     index: bpy.props.IntProperty(name="index")
 
-    def execute(self, context):  # eventloop should be here
+    def execute(self, context):
         setattr(context.scene.colorSelectorProps, "show_hide_ID_{}".format(self.index), True)
         bpy.ops.mesh.reveal()
         deselect_all()
@@ -209,7 +209,7 @@ class COLOR_SELECTOR_OT_show(Operator):
         return {'FINISHED'}
 
 
-classs = [
+classes = [
     COLOR_SELECTOR_OT_start,
     COLOR_SELECTOR_OT_end,
     COLOR_SELECTOR_OT_select,
@@ -221,11 +221,11 @@ classs = [
 
 
 def register():
-    for c in classs:
+    for c in classes:
         bpy.utils.register_class(c)
 
 def unregister():
-    for c in classs:
+    for c in classes:
         bpy.utils.unregister_class(c)
 
 
