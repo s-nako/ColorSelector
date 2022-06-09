@@ -52,6 +52,8 @@ def add_materials():
 
 def remove_materials():
     obj = bpy.context.active_object
+    current_mode = bpy.context.object.mode
+    bpy.ops.object.mode_set(mode='OBJECT')
     if obj and hasattr(obj.data, 'materials'):
         i = 0
         for material in obj.data.materials:
@@ -59,6 +61,7 @@ def remove_materials():
                 obj.data.materials.pop(index=i)
             else:
                 i += 1
+    bpy.ops.object.mode_set(mode=current_mode)
 
 
 def delete_all_materials():
