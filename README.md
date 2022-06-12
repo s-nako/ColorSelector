@@ -2,7 +2,7 @@
 Blender Addon for modeling to assign colored material and select or show/hide meshes by color.
 
 ## Installation
-Download and put the 'solor_selector' folder in your Blender addons folder or use the 'Install from File...' menu on Blender.
+Download and put the 'color_selector' folder in your Blender addons folder or use the 'Install from File...' menu on Blender.
 
 ## How to use
 Select target mesh in 3D view and click the "Start" button in Tool > Color Selector.\
